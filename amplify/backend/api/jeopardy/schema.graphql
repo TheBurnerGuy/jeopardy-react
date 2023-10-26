@@ -1,0 +1,36 @@
+type RoomMeta @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  value: String
+  Room: Room @hasOne
+}
+
+type QuestionEvent @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Question: Question @hasOne
+  type: String
+  datetime: AWSDateTime
+}
+
+type Question @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  text: String
+  enabled: Boolean
+  points: Int
+  category: String
+}
+
+type Room @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  code: String
+  creation_datetime: AWSDateTime
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  admin: Boolean
+  creation_datetime: AWSDateTime
+  Room: RoomMeta @hasOne
+  points: Int
+} 
