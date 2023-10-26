@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import {BuzzerPage} from "./jeopardy/BuzzerPage";
+import {MqttBuzzerContextProvider} from "./mqttBuzzerContext";
 
 function App() {
   return (
@@ -9,6 +11,9 @@ function App() {
         <p>
           Hello world!
         </p>
+        <MqttBuzzerContextProvider>
+            <BuzzerPage />
+        </MqttBuzzerContextProvider>
       </header>
     </div>
   );

@@ -5,6 +5,11 @@ A simple React app for learning Amplify/DynamoDB/GraphSQL.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
+## Setup
+Copy the following files from another developer:
+- `amplify/team-provider-info.json`
+- `src/jeopardyconfig.json`
+
 ## Available Scripts
 
 ### `npm start`

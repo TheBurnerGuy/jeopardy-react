@@ -47,3 +47,6 @@ amplifytools.xcconfig
 # additional user added amplify data to ignore
 # this includes credentials for AWS
 amplify/team-provider-info.json
+
+# misc
+jeopardyconfig.json
