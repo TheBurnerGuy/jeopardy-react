@@ -3,9 +3,10 @@ import * as mqtt from 'mqtt/dist/mqtt.min'
 import jeopardyConfig from "./jeopardyconfig.json";
 
 const MqttBuzzerContext = React.createContext({
-    buzzerEvents : [],
-    mqttBuzzer : null,
-    pushBuzzer : () => {},
+    buzzerEvents: [],
+    mqttBuzzer: null,
+    pushBuzzer: () => {
+    },
 });
 
 const topicName = 'buzzer';
@@ -16,9 +17,9 @@ function MqttBuzzerContextProvider({children}) {
 
     useEffect(() => {
         const mqttBuzzer = mqtt.connect(jeopardyConfig.WEBSOCKET_ENDPOINT, {
-            clean : true, // Retain session
+            clean: true, // Retain session
             connectTimeout: 30 * 1000, // Timeout period
-            reconnectPeriod: 5000, // Reconnection period
+            reconnectPeriod: 1000, // Reconnection period
             // Authentication information
             clientId: jeopardyConfig.WEBSOCKET_CLIENTID,
             username: jeopardyConfig.WEBSOCKET_USERNAME,
@@ -52,7 +53,7 @@ function MqttBuzzerContextProvider({children}) {
 
     const pushBuzzer = useCallback(() => {
         console.log('publishing!')
-        mqttBuzzer.publish(topicName, JSON.stringify({text : 'Buzzer Pressed!', timestamp : Date.now()}));
+        mqttBuzzer.publish(topicName, JSON.stringify({text: 'Buzzer Pressed!', timestamp: Date.now()}));
     }, [mqttBuzzer]);
 
     return (
