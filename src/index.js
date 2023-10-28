@@ -5,6 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
+import theme from "./chakraStyling";
+import {ChakraProvider} from "@chakra-ui/react";
+import {GameStateContextProvider} from "./GameStateContext";
+import {MqttContextProvider} from "./mqttContext";
+import {BrowserRouter} from "react-router-dom";
 
 Amplify.configure(awsExports);
 
@@ -12,7 +17,15 @@ Amplify.configure(awsExports);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <ChakraProvider theme={theme}>
+          <BrowserRouter basename="/app">
+              <GameStateContextProvider>
+                  <MqttContextProvider>
+                      <App />
+                  </MqttContextProvider>
+              </GameStateContextProvider>
+          </BrowserRouter>
+      </ChakraProvider>
   </React.StrictMode>
 );
 

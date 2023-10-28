@@ -21,11 +21,11 @@ const theme = extendTheme({
                 colorScheme: 'blue', // default is gray
             },
         },
-        GridItem: {
+        Input: {
             baseStyle: {
                 color: 'gray.200',
-                bg: 'teal.500',
-                textAlign : 'center',
+                bg: 'teal.900',
+                borderColor : 'teal.700',
             },
         },
     },

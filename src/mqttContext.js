@@ -12,12 +12,15 @@ const MqttContext = React.createContext({
     buzzerLockId : null,
     buzzerLockStart : null,
     unlockBuzzer: () => {},
+    mainPageTabIndex: 0,
+    changeMainPageTabIndex: () => {},
 });
 
 const buzzerTopic = 'buzzer';
 const buzzerLockTopic = 'buzzer_lock';
 const displayTopic = 'display';
-const boardTopic = 'boardTopic';
+const boardTopic = 'board';
+const boardTabTopic = 'board_tab';
 const playerTopic = 'playerTopic';
 
 /**
@@ -32,6 +35,7 @@ function MqttContextProvider({children}) {
     const [buzzerEvents, setBuzzerEvents] = useState([]);
     const [buzzerLockId, setBuzzerLockId] = useState(null);
     const [buzzerLockStart, setBuzzerLockStart] = useState(null);
+    const [mainPageTabIndex, setMainPageTabIndex] = useState(2); //TODO: Reset to 0
 
     useEffect(() => {
         const mqttClient = mqtt.connect(jeopardyConfig.WEBSOCKET_ENDPOINT, {
@@ -74,6 +78,9 @@ function MqttContextProvider({children}) {
                     setBuzzerLockId(uuidv4());
                     setBuzzerLockStart(DateTime.now())
                     break;
+                case changeMainPageTabIndex:
+                    setMainPageTabIndex(Number(message));
+                    break;
                 default:
                     console.log('topic not found: ' + topic)
                     break;
@@ -97,7 +104,15 @@ function MqttContextProvider({children}) {
         mqttClient.publish(buzzerLockTopic, 'test lol');
     }, []);
 
-    const contextValue = {mqttClient, buzzerEvents, pushBuzzer, buzzerLockId, buzzerLockStart, unlockBuzzer};
+    const changeMainPageTabIndex = useCallback((tabIndex, global = false) => {
+        if (global) {
+            mqttClient.publish(boardTabTopic, String(tabIndex));
+        }
+        setMainPageTabIndex(tabIndex);
+    }, []);
+
+    const contextValue = {mqttClient, buzzerEvents, pushBuzzer, buzzerLockId, buzzerLockStart, unlockBuzzer,
+        mainPageTabIndex, changeMainPageTabIndex};
 
     return (
         <MqttContext.Provider value={contextValue}>
