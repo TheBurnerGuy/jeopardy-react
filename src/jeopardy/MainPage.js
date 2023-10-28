@@ -4,6 +4,7 @@ import {MqttContext} from "../mqttContext";
 import {BoardPage} from "./BoardPage";
 import {QuestionPage} from "./QuestionPage";
 import {GameStateContext} from "../GameStateContext";
+import {PlayerInfo} from "./PlayerInfo";
 
 export function MainPage() {
     const {isAdmin} = useContext(GameStateContext);
@@ -33,6 +34,8 @@ export function MainPage() {
                     </TabPanel>
                 </TabPanels>
             </Tabs>
+
+            <PlayerInfo />
         </Box>
     );
 }
