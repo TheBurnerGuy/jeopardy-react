@@ -1,6 +1,96 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getBoard = /* GraphQL */ `
+  query GetBoard($id: ID!) {
+    getBoard(id: $id) {
+      id
+      Room {
+        id
+        code
+        creation_datetime
+        createdAt
+        updatedAt
+        __typename
+      }
+      number
+      a1
+      a2
+      a3
+      a4
+      a5
+      b1
+      b2
+      b3
+      b4
+      b5
+      c1
+      c2
+      c3
+      c4
+      c5
+      d1
+      d2
+      d3
+      d4
+      d5
+      e1
+      e2
+      e3
+      e4
+      e5
+      createdAt
+      updatedAt
+      boardRoomId
+      __typename
+    }
+  }
+`;
+export const listBoards = /* GraphQL */ `
+  query ListBoards(
+    $filter: ModelBoardFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listBoards(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        number
+        a1
+        a2
+        a3
+        a4
+        a5
+        b1
+        b2
+        b3
+        b4
+        b5
+        c1
+        c2
+        c3
+        c4
+        c5
+        d1
+        d2
+        d3
+        d4
+        d5
+        e1
+        e2
+        e3
+        e4
+        e5
+        createdAt
+        updatedAt
+        boardRoomId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const getRoomMeta = /* GraphQL */ `
   query GetRoomMeta($id: ID!) {
     getRoomMeta(id: $id) {
@@ -53,8 +143,10 @@ export const getQuestionEvent = /* GraphQL */ `
         enabled
         points
         category
+        board_relation
         createdAt
         updatedAt
+        questionBoardId
         __typename
       }
       type
@@ -95,8 +187,43 @@ export const getQuestion = /* GraphQL */ `
       enabled
       points
       category
+      board_relation
+      Board {
+        id
+        number
+        a1
+        a2
+        a3
+        a4
+        a5
+        b1
+        b2
+        b3
+        b4
+        b5
+        c1
+        c2
+        c3
+        c4
+        c5
+        d1
+        d2
+        d3
+        d4
+        d5
+        e1
+        e2
+        e3
+        e4
+        e5
+        createdAt
+        updatedAt
+        boardRoomId
+        __typename
+      }
       createdAt
       updatedAt
+      questionBoardId
       __typename
     }
   }
@@ -114,8 +241,10 @@ export const listQuestions = /* GraphQL */ `
         enabled
         points
         category
+        board_relation
         createdAt
         updatedAt
+        questionBoardId
         __typename
       }
       nextToken

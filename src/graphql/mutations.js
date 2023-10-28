@@ -1,6 +1,150 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createBoard = /* GraphQL */ `
+  mutation CreateBoard(
+    $input: CreateBoardInput!
+    $condition: ModelBoardConditionInput
+  ) {
+    createBoard(input: $input, condition: $condition) {
+      id
+      Room {
+        id
+        code
+        creation_datetime
+        createdAt
+        updatedAt
+        __typename
+      }
+      number
+      a1
+      a2
+      a3
+      a4
+      a5
+      b1
+      b2
+      b3
+      b4
+      b5
+      c1
+      c2
+      c3
+      c4
+      c5
+      d1
+      d2
+      d3
+      d4
+      d5
+      e1
+      e2
+      e3
+      e4
+      e5
+      createdAt
+      updatedAt
+      boardRoomId
+      __typename
+    }
+  }
+`;
+export const updateBoard = /* GraphQL */ `
+  mutation UpdateBoard(
+    $input: UpdateBoardInput!
+    $condition: ModelBoardConditionInput
+  ) {
+    updateBoard(input: $input, condition: $condition) {
+      id
+      Room {
+        id
+        code
+        creation_datetime
+        createdAt
+        updatedAt
+        __typename
+      }
+      number
+      a1
+      a2
+      a3
+      a4
+      a5
+      b1
+      b2
+      b3
+      b4
+      b5
+      c1
+      c2
+      c3
+      c4
+      c5
+      d1
+      d2
+      d3
+      d4
+      d5
+      e1
+      e2
+      e3
+      e4
+      e5
+      createdAt
+      updatedAt
+      boardRoomId
+      __typename
+    }
+  }
+`;
+export const deleteBoard = /* GraphQL */ `
+  mutation DeleteBoard(
+    $input: DeleteBoardInput!
+    $condition: ModelBoardConditionInput
+  ) {
+    deleteBoard(input: $input, condition: $condition) {
+      id
+      Room {
+        id
+        code
+        creation_datetime
+        createdAt
+        updatedAt
+        __typename
+      }
+      number
+      a1
+      a2
+      a3
+      a4
+      a5
+      b1
+      b2
+      b3
+      b4
+      b5
+      c1
+      c2
+      c3
+      c4
+      c5
+      d1
+      d2
+      d3
+      d4
+      d5
+      e1
+      e2
+      e3
+      e4
+      e5
+      createdAt
+      updatedAt
+      boardRoomId
+      __typename
+    }
+  }
+`;
 export const createRoomMeta = /* GraphQL */ `
   mutation CreateRoomMeta(
     $input: CreateRoomMetaInput!
@@ -86,8 +230,10 @@ export const createQuestionEvent = /* GraphQL */ `
         enabled
         points
         category
+        board_relation
         createdAt
         updatedAt
+        questionBoardId
         __typename
       }
       type
@@ -112,8 +258,10 @@ export const updateQuestionEvent = /* GraphQL */ `
         enabled
         points
         category
+        board_relation
         createdAt
         updatedAt
+        questionBoardId
         __typename
       }
       type
@@ -138,8 +286,10 @@ export const deleteQuestionEvent = /* GraphQL */ `
         enabled
         points
         category
+        board_relation
         createdAt
         updatedAt
+        questionBoardId
         __typename
       }
       type
@@ -162,8 +312,43 @@ export const createQuestion = /* GraphQL */ `
       enabled
       points
       category
+      board_relation
+      Board {
+        id
+        number
+        a1
+        a2
+        a3
+        a4
+        a5
+        b1
+        b2
+        b3
+        b4
+        b5
+        c1
+        c2
+        c3
+        c4
+        c5
+        d1
+        d2
+        d3
+        d4
+        d5
+        e1
+        e2
+        e3
+        e4
+        e5
+        createdAt
+        updatedAt
+        boardRoomId
+        __typename
+      }
       createdAt
       updatedAt
+      questionBoardId
       __typename
     }
   }
@@ -179,8 +364,43 @@ export const updateQuestion = /* GraphQL */ `
       enabled
       points
       category
+      board_relation
+      Board {
+        id
+        number
+        a1
+        a2
+        a3
+        a4
+        a5
+        b1
+        b2
+        b3
+        b4
+        b5
+        c1
+        c2
+        c3
+        c4
+        c5
+        d1
+        d2
+        d3
+        d4
+        d5
+        e1
+        e2
+        e3
+        e4
+        e5
+        createdAt
+        updatedAt
+        boardRoomId
+        __typename
+      }
       createdAt
       updatedAt
+      questionBoardId
       __typename
     }
   }
@@ -196,8 +416,43 @@ export const deleteQuestion = /* GraphQL */ `
       enabled
       points
       category
+      board_relation
+      Board {
+        id
+        number
+        a1
+        a2
+        a3
+        a4
+        a5
+        b1
+        b2
+        b3
+        b4
+        b5
+        c1
+        c2
+        c3
+        c4
+        c5
+        d1
+        d2
+        d3
+        d4
+        d5
+        e1
+        e2
+        e3
+        e4
+        e5
+        createdAt
+        updatedAt
+        boardRoomId
+        __typename
+      }
       createdAt
       updatedAt
+      questionBoardId
       __typename
     }
   }

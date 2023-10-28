@@ -1,3 +1,34 @@
+type BoardPage @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Room: Room @hasOne
+  number: Int
+  a1: Boolean
+  a2: Boolean
+  a3: Boolean
+  a4: Boolean
+  a5: Boolean
+  b1: Boolean
+  b2: Boolean
+  b3: Boolean
+  b4: Boolean
+  b5: Boolean
+  c1: Boolean
+  c2: Boolean
+  c3: Boolean
+  c4: Boolean
+  c5: Boolean
+  d1: Boolean
+  d2: Boolean
+  d3: Boolean
+  d4: Boolean
+  d5: Boolean
+  e1: Boolean
+  e2: Boolean
+  e3: Boolean
+  e4: Boolean
+  e5: String
+}
+
 type RoomMeta @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
@@ -18,6 +49,8 @@ type Question @model @auth(rules: [{allow: public}]) {
   enabled: Boolean
   points: Int
   category: String
+  board_relation: String
+  BoardPage: BoardPage @hasOne
 }
 
 type Room @model @auth(rules: [{allow: public}]) {
@@ -33,4 +66,5 @@ type User @model @auth(rules: [{allow: public}]) {
   creation_datetime: AWSDateTime
   Room: RoomMeta @hasOne
   points: Int
-} 
+}
+ 
