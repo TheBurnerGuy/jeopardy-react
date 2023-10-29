@@ -17,7 +17,7 @@ Amplify.configure(awsExports);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
       <ChakraProvider theme={theme}>
-          <BrowserRouter basename="/app">
+          <BrowserRouter basename="">
               <GameStateContextProvider>
                   <MqttContextProvider>
                       <App />

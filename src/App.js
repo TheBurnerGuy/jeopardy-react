@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Flex} from "@chakra-ui/react";
 import {MainPage} from "./jeopardy/MainPage";
-import {Routes, Route} from "react-router";
+import {Routes, Route, Navigate} from "react-router";
 import {LoginPage} from "./LoginPage";
 import {MainPageConditionalContainer} from "./jeopardy/MainPageConditionalContainer";
 import {BuzzerPage} from "./jeopardy/BuzzerPage";
@@ -25,6 +25,12 @@ function App() {
                     path="room/:roomCode"
                     element={
                         <LoginPage />
+                    }
+                />
+                <Route
+                    path="/"
+                    element={
+                        <Navigate to="/room/AAABBB" />
                     }
                 />
             </Routes>
