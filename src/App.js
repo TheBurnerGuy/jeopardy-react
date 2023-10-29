@@ -1,10 +1,10 @@
 import React from 'react';
-import {BuzzerUserPage} from "./jeopardy/BuzzerUserPage";
 import {Box, Flex} from "@chakra-ui/react";
 import {MainPage} from "./jeopardy/MainPage";
 import {Routes, Route} from "react-router";
 import {LoginPage} from "./LoginPage";
 import {MainPageConditionalContainer} from "./jeopardy/MainPageConditionalContainer";
+import {BuzzerPage} from "./jeopardy/BuzzerPage";
 
 function App() {
     return (
@@ -16,7 +16,7 @@ function App() {
                         <MainPageConditionalContainer>
                             <Flex direction="row">
                                 <MainPage />
-                                <BuzzerUserPage />
+                                <BuzzerPage />
                             </Flex>
                         </MainPageConditionalContainer>
                     }

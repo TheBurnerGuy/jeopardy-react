@@ -42,6 +42,11 @@ export const createBoard = /* GraphQL */ `
       e3
       e4
       e5
+      columnA
+      columnB
+      columnC
+      columnD
+      columnE
       createdAt
       updatedAt
       boardRoomId
@@ -90,6 +95,11 @@ export const updateBoard = /* GraphQL */ `
       e3
       e4
       e5
+      columnA
+      columnB
+      columnC
+      columnD
+      columnE
       createdAt
       updatedAt
       boardRoomId
@@ -138,6 +148,11 @@ export const deleteBoard = /* GraphQL */ `
       e3
       e4
       e5
+      columnA
+      columnB
+      columnC
+      columnD
+      columnE
       createdAt
       updatedAt
       boardRoomId
@@ -162,6 +177,7 @@ export const createRoomMeta = /* GraphQL */ `
         updatedAt
         __typename
       }
+      creation_datetime
       createdAt
       updatedAt
       roomMetaRoomId
@@ -186,6 +202,7 @@ export const updateRoomMeta = /* GraphQL */ `
         updatedAt
         __typename
       }
+      creation_datetime
       createdAt
       updatedAt
       roomMetaRoomId
@@ -210,6 +227,7 @@ export const deleteRoomMeta = /* GraphQL */ `
         updatedAt
         __typename
       }
+      creation_datetime
       createdAt
       updatedAt
       roomMetaRoomId
@@ -341,6 +359,11 @@ export const createQuestion = /* GraphQL */ `
         e3
         e4
         e5
+        columnA
+        columnB
+        columnC
+        columnD
+        columnE
         createdAt
         updatedAt
         boardRoomId
@@ -393,6 +416,11 @@ export const updateQuestion = /* GraphQL */ `
         e3
         e4
         e5
+        columnA
+        columnB
+        columnC
+        columnD
+        columnE
         createdAt
         updatedAt
         boardRoomId
@@ -445,6 +473,11 @@ export const deleteQuestion = /* GraphQL */ `
         e3
         e4
         e5
+        columnA
+        columnB
+        columnC
+        columnD
+        columnE
         createdAt
         updatedAt
         boardRoomId
@@ -514,14 +547,15 @@ export const createUser = /* GraphQL */ `
       creation_datetime
       Room {
         id
-        name
-        value
+        code
+        creation_datetime
         createdAt
         updatedAt
-        roomMetaRoomId
         __typename
       }
       points
+      mesos
+      security_name
       createdAt
       updatedAt
       userRoomId
@@ -541,14 +575,15 @@ export const updateUser = /* GraphQL */ `
       creation_datetime
       Room {
         id
-        name
-        value
+        code
+        creation_datetime
         createdAt
         updatedAt
-        roomMetaRoomId
         __typename
       }
       points
+      mesos
+      security_name
       createdAt
       updatedAt
       userRoomId
@@ -568,14 +603,15 @@ export const deleteUser = /* GraphQL */ `
       creation_datetime
       Room {
         id
-        name
-        value
+        code
+        creation_datetime
         createdAt
         updatedAt
-        roomMetaRoomId
         __typename
       }
       points
+      mesos
+      security_name
       createdAt
       updatedAt
       userRoomId

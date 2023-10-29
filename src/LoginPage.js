@@ -4,13 +4,13 @@ import {GameStateContext} from "./GameStateContext";
 import {useParams, Navigate} from 'react-router';
 
 export function LoginPage() {
-    const {enterCurrentPlayer, updateRoomCode} = useContext(GameStateContext);
+    const {enterCurrentPlayer, updateRoomInfo} = useContext(GameStateContext);
     const { roomCode } = useParams();
     const [showRedirect, setShowRedirect] = useState(false);
 
     // Set room code when logging in
     useEffect(() => {
-        updateRoomCode(roomCode);
+        updateRoomInfo(roomCode);
     }, [roomCode]);
 
     const [username, setUsername] = useState('');

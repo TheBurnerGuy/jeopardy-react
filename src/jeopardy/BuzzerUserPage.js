@@ -8,15 +8,15 @@ import {MdCircleNotifications} from "react-icons/md";
 export function BuzzerUserPage() {
     const [buzzerDisabled, setBuzzerDisabled] = useState(false);
     const [buzzerLock, setBuzzerLock] = useState(true);
-    const [localBuzzerLockStart, setLocalBuzzerLockStart] = useState(DateTime.now()); //TODO: Set this to not initialize as now... this is just for testing purposes
+    const [localBuzzerLockStart, setLocalBuzzerLockStart] = useState(null);
     const {pushBuzzer, buzzerLockId, buzzerLockStart} = useContext(MqttContext);
 
-    // Disable buzzer lock if buzzer lock context iems have changed
+    // Disable buzzer lock if buzzer lock context items have changed
     useEffect(() => {
         if (buzzerLockId) {
             setBuzzerLock(false);
-            setBuzzerDisabled(false);
         }
+        setBuzzerDisabled(false);
     }, [buzzerLockId]);
 
     useEffect(() => {
@@ -26,9 +26,12 @@ export function BuzzerUserPage() {
     }, [buzzerLockStart]);
 
     const handleBuzzerPushed = () => {
-        const time = DateTime.now().diff(localBuzzerLockStart).as('milliseconds');
+        let time = -1;
+        if (localBuzzerLockStart != null) {
+            time = DateTime.now().diff(localBuzzerLockStart).as('milliseconds');
+        }
         setBuzzerLock(true);
-        setBuzzerDisabled()
+        setBuzzerDisabled(true)
         pushBuzzer(time);
     };
 

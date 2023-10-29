@@ -1,11 +1,34 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Grid, GridItem} from "@chakra-ui/react";
+import {GameStateContext} from "../GameStateContext";
+import {MqttContext} from "../mqttContext";
 
 export function BoardPage({number}) {
+    const {boards, updateBoardFields, isAdmin} = useContext(GameStateContext);
+    const {updateEveryonesBoardState} = useContext(MqttContext);
+    const board = boards && boards[number];
+
     const gridItemStyle = {h : '5rem', lineHeight: '5rem', textAlign : 'center'};
     const headerItemStyle = {color: 'gray.200', bg: 'green.500', fontWeight : 'bold'};
     const activeItemStyle = {color: 'gray.200', bg: 'teal.500'};
     const inactiveItemStyle = {color: 'gray.700', bg: 'gray.900'};
+
+    const renderGridItem = (identity, points) => {
+        const isActive = board[identity]
+        const customStyles = isActive ? activeItemStyle : inactiveItemStyle;
+        const handleClick = isAdmin ? async () => {
+            await updateBoardFields(board?.id, identity, !board[identity]);
+            await updateEveryonesBoardState();
+        } : undefined;
+
+        return (
+            <GridItem onClick={handleClick} {...customStyles} {...gridItemStyle}>{points}</GridItem>
+        );
+    };
+
+    if (!board) {
+        return null;
+    }
 
     return (
         <Grid
@@ -15,41 +38,41 @@ export function BoardPage({number}) {
             gap={1}
         >
             <GridItem colSpan={5} {...headerItemStyle} {...gridItemStyle}>{`Board ${number}`}</GridItem>
-            <GridItem {...activeItemStyle} {...gridItemStyle}>Column 1</GridItem>
-            <GridItem {...inactiveItemStyle} {...gridItemStyle}>Column 2</GridItem>
-            <GridItem {...gridItemStyle}>Column 3</GridItem>
-            <GridItem {...gridItemStyle}>Column 4</GridItem>
-            <GridItem {...gridItemStyle}>Column 5</GridItem>
+            <GridItem {...headerItemStyle} {...gridItemStyle}>{board.columnA}</GridItem>
+            <GridItem {...headerItemStyle} {...gridItemStyle}>{board.columnB}</GridItem>
+            <GridItem {...headerItemStyle} {...gridItemStyle}>{board.columnC}</GridItem>
+            <GridItem {...headerItemStyle} {...gridItemStyle}>{board.columnD}</GridItem>
+            <GridItem {...headerItemStyle} {...gridItemStyle}>{board.columnE}</GridItem>
 
-            <GridItem {...gridItemStyle}>100</GridItem>
-            <GridItem {...gridItemStyle}>100</GridItem>
-            <GridItem {...gridItemStyle}>100</GridItem>
-            <GridItem {...gridItemStyle}>100</GridItem>
-            <GridItem {...gridItemStyle}>100</GridItem>
+            {renderGridItem('a1', 100)}
+            {renderGridItem('b1', 100)}
+            {renderGridItem('c1', 100)}
+            {renderGridItem('d1', 100)}
+            {renderGridItem('e1', 100)}
 
-            <GridItem {...gridItemStyle}>200</GridItem>
-            <GridItem {...gridItemStyle}>200</GridItem>
-            <GridItem {...gridItemStyle}>200</GridItem>
-            <GridItem {...gridItemStyle}>200</GridItem>
-            <GridItem {...gridItemStyle}>200</GridItem>
+            {renderGridItem('a2', 200)}
+            {renderGridItem('b2', 200)}
+            {renderGridItem('c2', 200)}
+            {renderGridItem('d2', 200)}
+            {renderGridItem('e2', 200)}
 
-            <GridItem {...gridItemStyle}>300</GridItem>
-            <GridItem {...gridItemStyle}>300</GridItem>
-            <GridItem {...gridItemStyle}>300</GridItem>
-            <GridItem {...gridItemStyle}>300</GridItem>
-            <GridItem {...gridItemStyle}>300</GridItem>
+            {renderGridItem('a3', 300)}
+            {renderGridItem('b3', 300)}
+            {renderGridItem('c3', 300)}
+            {renderGridItem('d3', 300)}
+            {renderGridItem('e3', 300)}
 
-            <GridItem {...gridItemStyle}>400</GridItem>
-            <GridItem {...gridItemStyle}>400</GridItem>
-            <GridItem {...gridItemStyle}>400</GridItem>
-            <GridItem {...gridItemStyle}>400</GridItem>
-            <GridItem {...gridItemStyle}>400</GridItem>
+            {renderGridItem('a4', 400)}
+            {renderGridItem('b4', 400)}
+            {renderGridItem('c4', 400)}
+            {renderGridItem('d4', 400)}
+            {renderGridItem('e4', 400)}
 
-            <GridItem {...gridItemStyle}>500</GridItem>
-            <GridItem {...gridItemStyle}>500</GridItem>
-            <GridItem {...gridItemStyle}>500</GridItem>
-            <GridItem {...gridItemStyle}>500</GridItem>
-            <GridItem {...gridItemStyle}>500</GridItem>
+            {renderGridItem('a5', 500)}
+            {renderGridItem('b5', 500)}
+            {renderGridItem('c5', 500)}
+            {renderGridItem('d5', 500)}
+            {renderGridItem('e5', 500)}
         </Grid>
 
     );

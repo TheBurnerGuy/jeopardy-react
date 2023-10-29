@@ -39,6 +39,11 @@ export const onCreateBoard = /* GraphQL */ `
       e3
       e4
       e5
+      columnA
+      columnB
+      columnC
+      columnD
+      columnE
       createdAt
       updatedAt
       boardRoomId
@@ -84,6 +89,11 @@ export const onUpdateBoard = /* GraphQL */ `
       e3
       e4
       e5
+      columnA
+      columnB
+      columnC
+      columnD
+      columnE
       createdAt
       updatedAt
       boardRoomId
@@ -129,6 +139,11 @@ export const onDeleteBoard = /* GraphQL */ `
       e3
       e4
       e5
+      columnA
+      columnB
+      columnC
+      columnD
+      columnE
       createdAt
       updatedAt
       boardRoomId
@@ -150,6 +165,7 @@ export const onCreateRoomMeta = /* GraphQL */ `
         updatedAt
         __typename
       }
+      creation_datetime
       createdAt
       updatedAt
       roomMetaRoomId
@@ -171,6 +187,7 @@ export const onUpdateRoomMeta = /* GraphQL */ `
         updatedAt
         __typename
       }
+      creation_datetime
       createdAt
       updatedAt
       roomMetaRoomId
@@ -192,6 +209,7 @@ export const onDeleteRoomMeta = /* GraphQL */ `
         updatedAt
         __typename
       }
+      creation_datetime
       createdAt
       updatedAt
       roomMetaRoomId
@@ -317,6 +335,11 @@ export const onCreateQuestion = /* GraphQL */ `
         e3
         e4
         e5
+        columnA
+        columnB
+        columnC
+        columnD
+        columnE
         createdAt
         updatedAt
         boardRoomId
@@ -366,6 +389,11 @@ export const onUpdateQuestion = /* GraphQL */ `
         e3
         e4
         e5
+        columnA
+        columnB
+        columnC
+        columnD
+        columnE
         createdAt
         updatedAt
         boardRoomId
@@ -415,6 +443,11 @@ export const onDeleteQuestion = /* GraphQL */ `
         e3
         e4
         e5
+        columnA
+        columnB
+        columnC
+        columnD
+        columnE
         createdAt
         updatedAt
         boardRoomId
@@ -472,14 +505,15 @@ export const onCreateUser = /* GraphQL */ `
       creation_datetime
       Room {
         id
-        name
-        value
+        code
+        creation_datetime
         createdAt
         updatedAt
-        roomMetaRoomId
         __typename
       }
       points
+      mesos
+      security_name
       createdAt
       updatedAt
       userRoomId
@@ -496,14 +530,15 @@ export const onUpdateUser = /* GraphQL */ `
       creation_datetime
       Room {
         id
-        name
-        value
+        code
+        creation_datetime
         createdAt
         updatedAt
-        roomMetaRoomId
         __typename
       }
       points
+      mesos
+      security_name
       createdAt
       updatedAt
       userRoomId
@@ -520,14 +555,15 @@ export const onDeleteUser = /* GraphQL */ `
       creation_datetime
       Room {
         id
-        name
-        value
+        code
+        creation_datetime
         createdAt
         updatedAt
-        roomMetaRoomId
         __typename
       }
       points
+      mesos
+      security_name
       createdAt
       updatedAt
       userRoomId

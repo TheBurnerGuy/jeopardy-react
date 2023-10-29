@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
     Icon,
     IconButton,
@@ -9,11 +9,15 @@ import {
     PopoverContent,
     PopoverHeader,
     PopoverTrigger,
-    UnorderedList
+    UnorderedList,
 } from "@chakra-ui/react";
 import {MdAccessibility} from "react-icons/md";
+import {GameStateContext} from "../GameStateContext";
+import {PlayerInfoItem} from "./PlayerInfoItem";
 
 export function PlayerInfo() {
+    const {players} = useContext(GameStateContext);
+
     return (
         <Popover>
             <PopoverTrigger>
@@ -34,10 +38,11 @@ export function PlayerInfo() {
                 <PopoverHeader>Player Info</PopoverHeader>
                 <PopoverBody>
                     <UnorderedList>
-                        <ListItem>Player1</ListItem>
-                        <ListItem>Player2</ListItem>
-                        <ListItem>Player3</ListItem>
-                        <ListItem>Player4</ListItem>
+                        {players && players.map(player => (
+                            <ListItem key={player.id}>
+                                <PlayerInfoItem player={player} />
+                            </ListItem>
+                        ))}
                     </UnorderedList>
                 </PopoverBody>
             </PopoverContent>

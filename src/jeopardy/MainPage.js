@@ -18,9 +18,9 @@ export function MainPage() {
                 onChange={useCallback(index => changeMainPageTabIndex(index, isAdmin), [isAdmin])}
             >
                 <TabList>
-                    <Tab>Board 1</Tab>
-                    <Tab>Board 2</Tab>
-                    <Tab>Question</Tab>
+                    <Tab isDisabled={!isAdmin}>Board 1</Tab>
+                    <Tab isDisabled={!isAdmin}>Board 2</Tab>
+                    <Tab isDisabled={!isAdmin}>Question</Tab>
                 </TabList>
                 <TabPanels>
                     <TabPanel>

@@ -1,4 +1,4 @@
-type BoardPage @model @auth(rules: [{allow: public}]) {
+type Board @model @auth(rules: [{allow: public}]) {
   id: ID!
   Room: Room @hasOne
   number: Int
@@ -26,7 +26,12 @@ type BoardPage @model @auth(rules: [{allow: public}]) {
   e2: Boolean
   e3: Boolean
   e4: Boolean
-  e5: String
+  e5: Boolean
+  columnA: String
+  columnB: String
+  columnC: String
+  columnD: String
+  columnE: String
 }
 
 type RoomMeta @model @auth(rules: [{allow: public}]) {
@@ -34,6 +39,7 @@ type RoomMeta @model @auth(rules: [{allow: public}]) {
   name: String
   value: String
   Room: Room @hasOne
+  creation_datetime: AWSDateTime
 }
 
 type QuestionEvent @model @auth(rules: [{allow: public}]) {
@@ -50,7 +56,7 @@ type Question @model @auth(rules: [{allow: public}]) {
   points: Int
   category: String
   board_relation: String
-  BoardPage: BoardPage @hasOne
+  Board: Board @hasOne
 }
 
 type Room @model @auth(rules: [{allow: public}]) {
@@ -64,7 +70,9 @@ type User @model @auth(rules: [{allow: public}]) {
   name: String
   admin: Boolean
   creation_datetime: AWSDateTime
-  Room: RoomMeta @hasOne
+  Room: Room @hasOne
   points: Int
+  mesos: Int
+  security_name: String
 }
  

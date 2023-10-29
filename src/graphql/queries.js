@@ -39,6 +39,11 @@ export const getBoard = /* GraphQL */ `
       e3
       e4
       e5
+      columnA
+      columnB
+      columnC
+      columnD
+      columnE
       createdAt
       updatedAt
       boardRoomId
@@ -81,6 +86,11 @@ export const listBoards = /* GraphQL */ `
         e3
         e4
         e5
+        columnA
+        columnB
+        columnC
+        columnD
+        columnE
         createdAt
         updatedAt
         boardRoomId
@@ -105,6 +115,7 @@ export const getRoomMeta = /* GraphQL */ `
         updatedAt
         __typename
       }
+      creation_datetime
       createdAt
       updatedAt
       roomMetaRoomId
@@ -123,6 +134,7 @@ export const listRoomMetas = /* GraphQL */ `
         id
         name
         value
+        creation_datetime
         createdAt
         updatedAt
         roomMetaRoomId
@@ -216,6 +228,11 @@ export const getQuestion = /* GraphQL */ `
         e3
         e4
         e5
+        columnA
+        columnB
+        columnC
+        columnD
+        columnE
         createdAt
         updatedAt
         boardRoomId
@@ -293,14 +310,15 @@ export const getUser = /* GraphQL */ `
       creation_datetime
       Room {
         id
-        name
-        value
+        code
+        creation_datetime
         createdAt
         updatedAt
-        roomMetaRoomId
         __typename
       }
       points
+      mesos
+      security_name
       createdAt
       updatedAt
       userRoomId
@@ -321,6 +339,8 @@ export const listUsers = /* GraphQL */ `
         admin
         creation_datetime
         points
+        mesos
+        security_name
         createdAt
         updatedAt
         userRoomId
